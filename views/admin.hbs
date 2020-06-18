@@ -1,0 +1,94 @@
+<div class="admin_container">
+
+  <a href="/" class="goToMain">Go to main page.</a> |
+  <a href="/admin/logout" class="Logout">Logout of admin panel</a>
+
+  <hr>
+
+  <div class="addPost">
+    <h1>Add new post</h1>
+    <hr class="hr-1">
+    <form action="/admin/addPost" method="POST" enctype="multipart/form-data">
+      <div class="d-f">
+        <div class="NewPost">
+          <label for="title" class="fieldF">
+            <div class="exec">* </div> Title:
+          </label>
+          <input type="text" name="title" id="title">
+        </div>
+
+        <div class="NewPost">
+          <div class="file-field input-field">
+            <div class="btn">
+              <span>File</span>
+              <input type="file" name="img">
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="NewPost">
+          <label for="category">Category name:</label>
+          <input type="text" name="category" id="categoryv">
+        </div>
+      </div>
+
+      <div class="NewPost">
+        <label for="content" class="fieldF">
+          <div class="exec">* </div>Content:
+        </label>
+        <textarea name="content" id="content"></textarea>
+      </div>
+
+      <button type="submit">ADD</button>
+    </form>
+  </div>
+  <hr>
+  <table>
+    <thead>
+      <tr>
+        <td>Views</td>
+        <td>Title</td>
+        <td>Content</td>
+        <td>Image Link</td>
+        <td>Date</td>
+        <td>Comments</td>
+        <td>ACTIONS</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      {{#if news}}
+      {{#each news}}
+      <tr>
+        <td>{{views}}</td>
+        <td>{{title}}</td>
+        <td>{{content}}</td>
+        <td style="max-width: 20%; word-break: break-word;">{{img}}</td>
+        <td>{{date}}</td>
+        <td>{{comments.length}}</td>
+
+        <td class="PostBtns">
+          <form action="/admin/deletePost?postid={{_id}}" method="POST">
+            <button type="submit" class="btnReg delete">DELETE</button>
+          </form>
+
+          <a href="/news?postid={{_id}}" class="PostBtns BtnPodob">Open post</a>
+          <a href="/admin/editPost?postid={{_id}}" class="PostBtns BtnPodob">Edit post</a>
+        </td>
+      </tr>
+      {{/each}}
+      {{else}}
+      <tr>
+        <td>No news yet.</td>
+      </tr>
+      {{/if}}
+
+
+    </tbody>
+  </table>
+
+
+
+</div>

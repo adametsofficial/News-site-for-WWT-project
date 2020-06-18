@@ -1,0 +1,33 @@
+<div class="container">
+
+  <div class="eachposts">
+
+    {{#if news}}
+    {{#each news}}
+    <div class="col-md-6 col-lg-4">
+      <a href="/news?postid={{_id}}" class="a-block d-flex align-items-center height-md"
+        style="background-image: url('{{img}}');">
+        <div class="text">
+          <div class="post-meta">
+            <span class="category">{{category}}</span>
+            <span class="mr-2">{{date}}</span>
+            <span class="ml-2"><span class="fa fa-comments"></span>
+              {{comments.length}}
+            </span>
+          </div>
+          <h3>{{title}}</h3>
+        </div>
+      </a>
+    </div>
+    {{/each}}
+    {{else}}
+    <div class="col-md-6 col-lg-4">
+      Новостей пока нет
+    </div>
+    {{/if}}
+
+  </div>
+
+</div>
+
+ {{!-- &bullet; --}}

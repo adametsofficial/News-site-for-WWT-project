@@ -1,0 +1,73 @@
+<div class="admin_container">
+
+  <a href="/admin" class="goToMain">Go back.</a> |
+  <a href="/admin/logout" class="Logout">Logout of admin panel</a>
+
+  <hr>
+
+
+  <div class="addPost">
+    <h1>Edit post</h1>
+    <hr class="hr-1">
+    <form action="/admin/editPost?postid={{postid}}" method="POST" enctype="multipart/form-data">
+      <div class="d-f">
+        <div class="NewPost">
+          <label for="title" class="fieldF">
+            <div class="exec">* </div> Title:
+          </label>
+          <input type="text" value="{{title}}" name="title" id="title">
+        </div>
+
+        <div class="NewPost">
+          <div class="file-field input-field">
+            <div class="btn">
+              <span>File</span>
+              <input type="file" name="img">
+            </div>
+          </div>
+        </div>
+
+        <div class="NewPost">
+          <label for="category">Category name:</label>
+          <input type="text" value="{{category}}" name="category" id="categoryv">
+        </div>
+      </div>
+
+      <div class="NewPost">
+        <label for="content" class="fieldF">
+          <div class="exec">* </div>Content:
+        </label>
+        <textarea name="content" id="content">{{content}}</textarea>
+      </div>
+
+      <button type="submit">Update</button>
+    </form>
+  </div>
+  <hr>
+
+  <div class="post-comments-edit">
+    {{#if comments}}
+    {{#each comments}}
+    <div class="commed">
+
+      <div class="commed">
+        <div class="editedCommentName">
+          <b>Name:</b> {{name}}
+        </div>
+        <hr>
+        <div class="editedCommentContent">
+          <b>Content:</b> {{message}}
+        </div>
+      </div>
+      <form action="/admin/editPost/removecomment?postid={{@root.postid}}&commentId={{_id}}" method="post">
+        <button type="submit" class="red">Delete comment</button>
+      </form>
+    </div>
+
+    {{/each}} 
+    {{else}}
+    <p>There are no comments in this post yet.</p>
+    {{/if}}
+  </div>
+
+</div>

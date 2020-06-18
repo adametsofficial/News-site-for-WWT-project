@@ -1,0 +1,41 @@
+<style>
+
+  body {
+    padding: 0;
+    margin: 0;
+  }
+  .adminAuth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100vh;
+
+  }
+
+  .controlInput {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+  }
+</style>
+
+<div class="adminAuth">
+<h1>Auth in the admin panel</h1>
+  <form action="/admin/auth" method="POST">
+    <div class="controlInput">
+      <label for="Username">Username:</label>
+      <input type="text" id="Username" name="username" class="Icontrol">
+    </div>
+
+    <div class="controlInput">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" class="Icontrol">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+
+</div>
